@@ -1,0 +1,14 @@
+*.class
+*.settings
+*.project
+*.classpath
+target
+# Package Files #
+*.jar
+*.war
+*.ear
+.metadata
+.idea
+/target
+/node_modules
+/bower_components
