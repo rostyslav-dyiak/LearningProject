@@ -43,4 +43,8 @@ public class DefaultStudentService implements StudentService {
 		return dao.findAll(sort);
 	}
 
+	public void setDao(StudentDao dao) {
+		this.dao = dao;
+	}
+
 }

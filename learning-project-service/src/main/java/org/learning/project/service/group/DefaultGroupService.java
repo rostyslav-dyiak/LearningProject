@@ -44,4 +44,8 @@ public class DefaultGroupService implements GroupService {
 		return dao.findAll(sort);
 	}
 
+	public void setDao(GroupDao dao) {
+		this.dao = dao;
+	}
+
 }
