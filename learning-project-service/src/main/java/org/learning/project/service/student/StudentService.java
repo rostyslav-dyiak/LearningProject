@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 
 public interface StudentService {
 
-	public void addNewStudent(Student Student);
+	public void addNewStudent(Student student);
 
 	public Iterable<Student> getAllStudents();
 
