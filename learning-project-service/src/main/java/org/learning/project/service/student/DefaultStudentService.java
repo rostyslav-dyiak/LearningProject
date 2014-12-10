@@ -14,8 +14,8 @@ public class DefaultStudentService implements StudentService {
 	private StudentDao dao;
 
 	@Override
-	public void addNewStudent(Student student) {
-		dao.save(student);
+	public Student addNewStudent(Student student) {
+		return dao.save(student);
 	}
 
 	@Override
