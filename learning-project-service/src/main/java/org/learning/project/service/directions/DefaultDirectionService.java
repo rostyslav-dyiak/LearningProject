@@ -2,28 +2,29 @@ package org.learning.project.service.directions;
 
 import org.learning.project.dao.CourseDirectionDao;
 import org.learning.project.domain.model.CourseDirection;
-import org.learning.project.service.teacher.DirectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultDirectionService implements DirectionService {
 	@Autowired
 	private CourseDirectionDao dao;
 
 	@Override
-	public Page<CourseDirection> getAllStudents(Pageable pagable) {
+	public Page<CourseDirection> getAllDirections(Pageable pagable) {
 		return dao.findAll(pagable);
 	}
 
 	@Override
-	public Iterable<CourseDirection> getAllStudents(Sort sort) {
+	public Iterable<CourseDirection> getAllDirections(Sort sort) {
 		return dao.findAll(sort);
 	}
 
 	@Override
-	public Iterable<CourseDirection> getAllStudents() {
+	public Iterable<CourseDirection> getAllDirections() {
 		return dao.findAll();
 	}
 

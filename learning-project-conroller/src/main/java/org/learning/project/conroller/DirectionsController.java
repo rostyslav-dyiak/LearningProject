@@ -1,7 +1,7 @@
 package org.learning.project.conroller;
 
 import org.learning.project.domain.model.CourseDirection;
-import org.learning.project.service.teacher.DirectionService;
+import org.learning.project.service.directions.DirectionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +12,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/directions")
+@RestController
+@RequestMapping(value = "/directions")
 public class DirectionsController extends BaseController {
 	private static final Logger LOG = LoggerFactory.getLogger(DirectionsController.class);
 	@Autowired
 	private DirectionService service;
 
-	/**
-	 * POST method for creating feedback.
-	 * 
-	 * @param feedbackResource
-	 *            resource, that will be stored in system.
-	 * @return Resource with generated identifier.
-	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public CourseDirection createFeedback(@RequestBody final CourseDirection courseDirection) {
-		LOG.info("Creating feedback: {}", courseDirection);
+		LOG.info("Creating direction: {}", courseDirection);
 
 		return service.addDirection(courseDirection);
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public Iterable<CourseDirection> getAllDirectionsFeedback() {
+		LOG.info("Returning all directions from database");
+		return service.getAllDirections();
 	}
 }

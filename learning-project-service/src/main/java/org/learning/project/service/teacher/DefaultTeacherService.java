@@ -1,13 +1,14 @@
-package org.learning.project.service.directions;
+package org.learning.project.service.teacher;
 
 import org.learning.project.dao.TeacherDao;
 import org.learning.project.domain.persons.Teacher;
-import org.learning.project.service.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultTeacherService implements TeacherService {
 	@Autowired
 	private TeacherDao dao;
