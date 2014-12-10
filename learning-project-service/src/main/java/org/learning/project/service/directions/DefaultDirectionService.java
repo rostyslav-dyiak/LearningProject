@@ -28,8 +28,8 @@ public class DefaultDirectionService implements DirectionService {
 	}
 
 	@Override
-	public void addDirection(CourseDirection direction) {
-		dao.save(direction);
+	public CourseDirection addDirection(CourseDirection direction) {
+		return dao.save(direction);
 	}
 
 	public void setDao(CourseDirectionDao dao) {

@@ -7,6 +7,7 @@
 	<artifactId>learning-project-conroller</artifactId>
 	<name>learning-project-conroller</name>
 	<url>http://maven.apache.org</url>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>learning-project</groupId>
@@ -15,6 +16,27 @@
 	</parent>
 
 	<dependencies>
+		<dependency>
+			<groupId>learning-project</groupId>
+			<artifactId>learning-project-service</artifactId>
+			<version>${version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

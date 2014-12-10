@@ -12,6 +12,6 @@ public interface DirectionService {
 
 	public Iterable<CourseDirection> getAllStudents();
 	
-	public void addDirection(CourseDirection direction);
+	public CourseDirection addDirection(CourseDirection direction);
 
 }
