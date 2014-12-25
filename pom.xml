@@ -15,7 +15,7 @@
 		<module>learning-project-database</module>
 		<module>learning-project-dao</module>
 		<module>learning-project-service</module>
-		<module>learning-project-conroller</module>
+		<module>learning-project-rest-api</module>
 	</modules>
 
 	<properties>
