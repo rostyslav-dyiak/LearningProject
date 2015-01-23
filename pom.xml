@@ -18,6 +18,8 @@
 		<module>learning-project-rest-api</module>
 	</modules>
 
+
+
 	<properties>
 		<java-version>1.7</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,15 +35,15 @@
 
 		<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 		<jdbc.databaseurl>jdbc:mysql://localhost/learning-project</jdbc.databaseurl>
-		<jdbc.username>rostyslav</jdbc.username>
+		<jdbc.username>root</jdbc.username>
 		<jdbc.password>nar34lics</jdbc.password>
 		<jpa.database>learning-project</jpa.database>
 		<jpa.showSql>true</jpa.showSql>
+		<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+		<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+		<hibernate.ejb.naming_strategy>org.hibernate.cfg.ImprovedNamingStrategy</hibernate.ejb.naming_strategy>
+		<entitymanager.packages.to.scan>org.learning.project.domain</entitymanager.packages.to.scan>
 		<api.output.json.pretty>true</api.output.json.pretty>
-		<api.domain.content.url>http://localhost:8080/funny-pictures-rest-api/api/content</api.domain.content.url>
-		<api.domain.meme.url>http://localhost:8080/funny-pictures-rest-api/meme</api.domain.meme.url>
-		<api.domain.picture.url>http://localhost:8080/funny-pictures-rest-api/picture</api.domain.picture.url>
-
 	</properties>
 
 
@@ -146,5 +148,11 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 </project>
