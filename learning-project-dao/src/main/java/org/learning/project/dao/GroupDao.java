@@ -2,7 +2,9 @@ package org.learning.project.dao;
 
 import org.learning.project.domain.model.Group;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-public interface GroupDao extends PagingAndSortingRepository<Group, Long>{
+@Repository("groupDao")
+public interface GroupDao extends PagingAndSortingRepository<Group, Long> {
 
 }

@@ -3,6 +3,7 @@ package org.learning.project.service.student;
 import org.learning.project.dao.StudentDao;
 import org.learning.project.domain.persons.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultStudentService implements StudentService {
+	
 	@Autowired
+	@Qualifier("studentDao")
 	private StudentDao dao;
 
 	@Override

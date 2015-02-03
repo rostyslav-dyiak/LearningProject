@@ -8,19 +8,34 @@ import org.learning.project.dao.config.RepositoryContext;
 import org.learning.project.service.config.ServiceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebConfigurator implements WebApplicationInitializer {
+public class WebConfigurator extends AbstractAnnotationConfigDispatcherServletInitializer {
 	private static final Logger LOG = LoggerFactory.getLogger(WebConfigurator.class);
 
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] { WebApplicationContext.class };
+	}
+ 
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return null;
+	}
+ 
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };
+	}
+	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		LOG.info("Setting up dispatcher servlet!");
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(RepositoryContext.class, ServiceContext.class);
+		rootContext.register(RepositoryContext.class, ServiceContext.class,SecurityConfig.class);
 
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 
