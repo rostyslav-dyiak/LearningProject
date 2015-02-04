@@ -5,6 +5,7 @@ import org.learning.project.service.student.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/students")
 public class StudentConroller {
 	private static final Logger LOG = LoggerFactory.getLogger(StudentConroller.class);
+	
 	@Autowired
+	@Qualifier("studentService")
 	private StudentService studentService;
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -37,7 +40,7 @@ public class StudentConroller {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public Page<Student> getStudents(Pageable pageable) {
-		LOG.info("Get student by id : {}", pageable);
+		LOG.info("Get students {}", pageable);
 		return studentService.getAllStudents(pageable);
 	}
 

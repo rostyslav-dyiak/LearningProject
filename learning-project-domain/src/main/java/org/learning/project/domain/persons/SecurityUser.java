@@ -20,7 +20,7 @@ public class SecurityUser {
 	private String password;
 	@Column(name = "enabled", nullable = false, columnDefinition = "BIT")
 	private boolean enabled;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<UserRole> userRole;
 
 	public SecurityUser() {

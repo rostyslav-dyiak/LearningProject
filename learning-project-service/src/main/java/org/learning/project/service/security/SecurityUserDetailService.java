@@ -9,6 +9,7 @@ import org.learning.project.dao.UserDao;
 import org.learning.project.domain.persons.SecurityUser;
 import org.learning.project.domain.persons.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,7 +22,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("userDetailsService")
 public class SecurityUserDetailService implements UserDetailsService {
 	@Autowired
+	@Qualifier("userDao")
 	private UserDao dao;
+
+	@Transactional
+	public SecurityUser registerUser(final SecurityUser user) {
+		Set<UserRole> userRoles = new HashSet<UserRole>();
+		userRoles.add(new UserRole(user, "ROLE_ADMIN"));
+		user.setUserRole(userRoles);
+		return dao.save(user);
+	}
 
 	@Override
 	@Transactional(readOnly = true)

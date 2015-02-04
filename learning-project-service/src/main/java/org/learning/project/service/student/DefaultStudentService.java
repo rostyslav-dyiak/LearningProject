@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("studentService")
 public class DefaultStudentService implements StudentService {
 	
 	@Autowired
@@ -22,6 +23,7 @@ public class DefaultStudentService implements StudentService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Iterable<Student> getAllStudents() {
 		return dao.findAll();
 	}
@@ -37,6 +39,7 @@ public class DefaultStudentService implements StudentService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Page<Student> getAllStudents(Pageable pagable) {
 		return dao.findAll(pagable);
 	}
